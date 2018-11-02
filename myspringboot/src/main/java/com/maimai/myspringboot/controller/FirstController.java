@@ -49,7 +49,7 @@ public class FirstController {
     @Autowired
     private AsyncTask asyncTask;
 
-    @RequestMapping("asyncTask")
+        @RequestMapping("asyncTask")
     public String doTask() throws InterruptedException{
         long currentTimeMillis = System.currentTimeMillis();
         asyncTask.task1();
