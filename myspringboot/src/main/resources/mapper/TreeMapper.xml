@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.maimai.myspringboot.dao.TreeMapper">
+
+	<resultMap id="BaseResultMap"
+		type="com.maimai.myspringboot.entity.Node">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="parentId" property="pid" jdbcType="VARCHAR" />
+
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id, name, parentId
+	</sql>
+
+	<select id="getList" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_areainfo
+
+	</select>
+
+	<select id="getListByParentId" resultType="hashmap"
+		parameterType="string">
+		SELECT id,`name` FROM (
+		SELECT *, IF(FIND_IN_SET(parentId,@pid)>0,@pid:=CONCAT(@pid,',',id),0) AS
+		ischild FROM t_areainfo t1,(SELECT @pid:=#{pid} ) a
+		) AS tt WHERE ischild !=0
+	</select>
+
+
+</mapper>
