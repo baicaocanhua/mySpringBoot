@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+	<!-- 数据库驱动包位置 -->
+	<classPathEntry
+		location="D:\mysql-connector-java-5.1.45.jar" />
+
+	<context id="DB2Tables" targetRuntime="MyBatis3">
+		<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+
+		<!-- 数据库链接URL、用户名、密码 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://127.0.0.1:3306/test" userId="root"
+			password="123456">
+		</jdbcConnection>
+		<!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 
+			和 NUMERIC 类型解析为java.math.BigDecimal -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="true" />
+		</javaTypeResolver>
+
+		<!-- 以下的 targetPackage 和 targetProject 属性值需要配置 -->
+		<!-- 生成模型的包名和位置 -->
+		<javaModelGenerator
+			targetPackage="${targetModelPackage}"
+			targetProject="${targetJavaProject}">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="true" />
+			<!-- 从数据库返回的值被清理前后的空格 -->
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		<!-- 生成的映射文件包名和位置 -->
+		<!-- *Mapper.xml 文件的位置 ，targetPackage：包名，targetProject：项目下的路径 -->
+		<sqlMapGenerator targetPackage="${targetXMLPackage}"
+			targetProject="${targetResourcesProject}">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		<!-- 生成DAO的包名和位置 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="${targetMapperPackage}"
+			targetProject="${targetJavaProject}">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+		<!-- 要生成那些表（更改 tableName 和 domainObjectName 就可以） -->
+		<!--<table tableName="user" domainObjectName="User"-->
+			<!--enableCountByExample="false" enableUpdateByExample="false"-->
+			<!--enableDeleteByExample="false" enableSelectByExample="false"-->
+			<!--selectByExampleQueryId="false" />-->
+
+		<!--<table tableName="%" mapperName="{0}Dao"> -->
+		<!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/> -->
+		<!--</table> -->
+
+	</context>
+</generatorConfiguration>  
