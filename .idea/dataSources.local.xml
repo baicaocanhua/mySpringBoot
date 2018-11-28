@@ -2,10 +2,10 @@
 <project version="4">
   <component name="dataSourceStorageLocal">
     <data-source name="test@localhost" uuid="24aac1f6-7fdd-4c77-b587-bb773e5c5b39">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" family="MYSQL" exact-version="0.0" />
     </data-source>
     <data-source name="公司" uuid="739ef6ac-f45a-4481-a960-cffd956d9785">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" family="MYSQL" exact-version="0.0" />
     </data-source>
   </component>
 </project>
